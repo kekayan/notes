@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Django Abstract Model as Base Model | Notes</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Django Abstract Model as Base Model" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="The abstract model in django sample use case like auditing" />
+<meta property="og:description" content="The abstract model in django sample use case like auditing" />
+<link rel="canonical" href="https://kekayan.github.io/notes/django/python/2020/05/19/django-abstract-model.html" />
+<meta property="og:url" content="https://kekayan.github.io/notes/django/python/2020/05/19/django-abstract-model.html" />
+<meta property="og:site_name" content="Notes" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-05-19T00:00:00-05:00" />
+<script type="application/ld+json">
+{"description":"The abstract model in django sample use case like auditing","@type":"BlogPosting","headline":"Django Abstract Model as Base Model","dateModified":"2020-05-19T00:00:00-05:00","datePublished":"2020-05-19T00:00:00-05:00","url":"https://kekayan.github.io/notes/django/python/2020/05/19/django-abstract-model.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://kekayan.github.io/notes/django/python/2020/05/19/django-abstract-model.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/notes/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://kekayan.github.io/notes/feed.xml" title="Notes" /><link rel="shortcut icon" type="image/x-icon" href="/notes/images/favicon.ico"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Django Abstract Model as Base Model | Notes</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Django Abstract Model as Base Model" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="The abstract model in django sample use case like auditing" />
+<meta property="og:description" content="The abstract model in django sample use case like auditing" />
+<link rel="canonical" href="https://kekayan.github.io/notes/django/python/2020/05/19/django-abstract-model.html" />
+<meta property="og:url" content="https://kekayan.github.io/notes/django/python/2020/05/19/django-abstract-model.html" />
+<meta property="og:site_name" content="Notes" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-05-19T00:00:00-05:00" />
+<script type="application/ld+json">
+{"description":"The abstract model in django sample use case like auditing","@type":"BlogPosting","headline":"Django Abstract Model as Base Model","dateModified":"2020-05-19T00:00:00-05:00","datePublished":"2020-05-19T00:00:00-05:00","url":"https://kekayan.github.io/notes/django/python/2020/05/19/django-abstract-model.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://kekayan.github.io/notes/django/python/2020/05/19/django-abstract-model.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><link type="application/atom+xml" rel="alternate" href="https://kekayan.github.io/notes/feed.xml" title="Notes" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head><body><header class="site-header">
+
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/notes/">Notes</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+<a class="page-link" href="/notes/about/">About Me</a><a class="page-link" href="/notes/search/">Search</a><a class="page-link" href="/notes/categories/">Tags</a>
+</div>
+      </nav>
+</div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Django Abstract Model as Base Model</h1>
+<p class="page-description">The abstract model in django sample use case like auditing</p>
+<p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-05-19T00:00:00-05:00" itemprop="datePublished">
+        May 19, 2020
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      2 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i> 
+      
+        <a class="category-tags-link" href="/notes/categories/#django">django</a>
+         
+      
+        <a class="category-tags-link" href="/notes/categories/#python">python</a>
+        
+      
+      </p>
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h1">
+<a href="#django-abstract-model">Django Abstract Model</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#why-abstract-model">Why Abstract Model</a></li>
+<li class="toc-entry toc-h2"><a href="#auto_now--auto_now_add">auto_now &amp; auto_now_add</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="django-abstract-model">
+<a class="anchor" href="#django-abstract-model" aria-hidden="true"><span class="octicon octicon-link"></span></a>Django Abstract Model</h1>
+<p>Let’s understand the value of Django abstract model by a sample use case .
+Imagine a scenario where we are building a Dog Management App.Let’s think our main models are</p>
+<ul>
+  <li>dog</li>
+  <li>owner</li>
+</ul>
+
+<p>So we will create two apps for example <code class="highlighter-rouge">dog</code> and <code class="highlighter-rouge">owner</code></p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>django-admin startapp dog
+django-admin startapp owner
+</code></pre></div></div>
+<p>While designing the data model, there is a requirement to save with created date and update date for both to audit the creation and modification. Since it is a common best practice .
+Usually what you will think,</p>
+
+<p>for owner, it will be</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Owner</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">UUIDField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">,</span> <span class="n">editable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+    <span class="c1"># including  these two fields in each model
+</span>    <span class="n">created_at</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">updated_at</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>    
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
+</code></pre></div></div>
+
+<p>and our models for Dog, it will be</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Dog</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">UUIDField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">,</span> <span class="n">editable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+    <span class="n">owner</span> <span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="n">Owner</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="o">.</span><span class="n">CASCADE</span><span class="p">)</span>
+    <span class="c1"># including  these two fields in each model
+</span>    <span class="n">created_at</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">updated_at</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>    
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
+</code></pre></div></div>
+
+<p>as you noticed we have included the both created date and update date fields for each model .</p>
+
+<p>Someone With the knowledge of OOP will think about it in a different way. With help of Abstract classes in Django
+He can first create a Date Aware Abstract model as a base and then extend it to other models without repeating it.
+To create a Abstract model in Django we have to add the Meta class and mention abstract is true.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">DateAwareModel</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+
+    <span class="n">created_at</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">updated_at</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">abstract</span> <span class="o">=</span> <span class="bp">True</span>
+
+</code></pre></div></div>
+
+<h2 id="why-abstract-model">
+<a class="anchor" href="#why-abstract-model" aria-hidden="true"><span class="octicon octicon-link"></span></a>Why Abstract Model</h2>
+<p>The abstract Model won’t have a table for it self or in other words django won’t generate tables for abstract models.So we can use the fields by inheriting it in as many models we want without repeating it.</p>
+
+<p>Now our Dog model will inherit DateAwareModel</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Dog</span><span class="p">(</span><span class="n">DateAwareModel</span><span class="p">):</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">UUIDField</span><span class="p">(</span><span class="n">primary_key</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">,</span> <span class="n">editable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+   
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
+</code></pre></div></div>
+<p>same for the Owner Model in addition to mentioned fields it now have created_at and updated_at from DateAwareModel.</p>
+
+<h2 id="auto_now--auto_now_add">
+<a class="anchor" href="#auto_now--auto_now_add" aria-hidden="true"><span class="octicon octicon-link"></span></a>auto_now &amp; auto_now_add</h2>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">created_at</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">updated_at</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+<p><code class="highlighter-rouge">auto_now_add</code> - updates on creation only
+<code class="highlighter-rouge">auto_now</code> -  updated to the current timestamp every time an object is saved or modified.</p>
+
+<p><strong>Meanwhile if you find any mistake please let me know .</strong> <img class="emoji" title=":envelope:" alt=":envelope:" src="https://github.githubassets.com/images/icons/emoji/unicode/2709.png" height="20" width="20">  <a href="mailto:notkekayan@gmail.com">email</a></p>
+
+  </div>
+<a class="u-url" href="/notes/django/python/2020/05/19/django-abstract-model.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/notes/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/notes/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/notes/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>My Personal Notes</p>
+      </div>
+    </div>
+
+    <div class="social-links">
+<ul class="social-media-list">
+<li><a rel="me" href="https://github.com/kekayan" title="kekayan"><svg class="svg-icon grey"><use xlink:href="/notes/assets/minima-social-icons.svg#github"></use></svg></a></li>
+<li><a rel="me" href="https://twitter.com/dneutr0n" title="dneutr0n"><svg class="svg-icon grey"><use xlink:href="/notes/assets/minima-social-icons.svg#twitter"></use></svg></a></li>
+</ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
