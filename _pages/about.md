@@ -4,9 +4,9 @@ title: About Me
 permalink: /about/
 ---
 
-If describe me in one word, :thought_balloon: that would be Creatambitionate :wink: (Creative, Ambitious and Passionate). I am a total tech nerd. I simply love new tech and the field I am in now.Looking at the world with a technological eye, to see how can I help people using the knowledge I gain through past years as a graduate of BSc. Software Engineering :mortar_board: from the University of Kelaniya.
+If describe me in one word, :thought_balloon: that would be Creatambitionate :wink: (**Creative, Ambitious and Passionate**). I am a total tech nerd. I simply love new tech and the field I am in now. Looking at the world with a technological eye, to see how can I help people using the knowledge I gain through past years as a graduate of **BSc.(Hons) Software Engineering** :mortar_board: from the University of Kelaniya.
 
-So far the best part of my career was my one-year internship as a Research Engineer in Pearson Lanka Pvt. Ltd. I worked in different projects with different tech stacks while learning about complex architectural concerns along the way. My “thing” was Machine Learning and Deep Learning. But Pearson gave me the chance to grow as a full-stack dev as well. If I mention some of my tech stack (just for the formalities :wink: ):
+So far the best part of my career was my one-year internship as a **Research Engineer** in Pearson Lanka Pvt. Ltd. I worked in different projects with different tech stacks while learning about complex architectural concerns along the way. My “thing” was Machine Learning and Deep Learning. But Pearson gave me the chance to grow as a full-stack dev as well. If I mention some of my tech stack (just for the formalities :wink: ):
 
 * Languages: Java, Python, JavaScript
 * Frameworks: SpringBoot, Flask, Django, ReactJs, VueJs

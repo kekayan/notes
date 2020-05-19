@@ -13,7 +13,9 @@ title: How do i start a Django Project
 
 Let's start a new project by executing `django-admin`'s `startproject` command .I will name the project as config.
 So i will execute following command in my python virtual environment.
-```shell django-admin startproject config``` .
+```shell 
+django-admin startproject config
+``` 
 
 Now the directory structure will be 
 
@@ -31,7 +33,7 @@ rootdir
         │   asgi.py
 ```
 
-first thing i am going to do is restructure the dir by taking out inner `config` and `manage.py` to root.
+first thing i am going to do is restructure the dir by taking out inner `config` and `manage.py` to the root dir.
 
 
 ```
@@ -46,14 +48,14 @@ rootdir
 ```
 
 ## Settings.py 
-
-I am going to install three more python packages 
+Let's see what are the modifications i do in the `settings.py`
+I am going to install two more python packages 
 ```shell
 pip install python-decouple
 pip install dj-database-url
 ```
 
-### python-decouple
+### why python-decouple
 Web apps have different environments params.For example
 in Django database url, password, secret key, debug status, email host, allowed hosts. Best thing to do is decouple them from actual application.
 Python Decouple is doing exactly that by separating the settings parameters from the source code.
@@ -86,7 +88,8 @@ Now in `settings.py` we can import the decouple and set the params to be taken f
 from decouple import config
 import dj_database_url
 ```
-We can add an extra argument to the `config` function, to define a default value  as below incase if it couldn't be found in `.env`.
+I am using `config` function from decouple to read the `.env` params.
+We can add an extra arguments to the `config` function, to define a default value  as below incase if it couldn't be found in `.env`.
 Also another argument called `cast` for the type. It can transform our String to mentioned type
 ```python
 SECRET_KEY = config('SECRET_KEY',default='S#perS3crEt_1122KKKK')
@@ -104,10 +107,10 @@ DATABASES = {
 
 ```
 
-### dj-database-url
+### why dj-database-url
 
-Above you have seen already we used [dj-database-url ](https://github.com/jacobian/dj-database-url)while setting database environment variable.
-The `dj_database_url.config` method returns a Django database connection dictionary, populated with all the data specified in your URL. There is also a conn_max_age argument to easily enable Django’s connection pool.
+Above you have already seen i have used [dj-database-url ](https://github.com/jacobian/dj-database-url)while setting database environment variable.
+The `dj_database_url.config` method returns a Django database connection dictionary, populated with all the data specified in your URL. There is also a conn_max_age argument to easily enable Django’s connection pool.So it helps us to config the database urls.
 
 
 ## Django Secret Key
