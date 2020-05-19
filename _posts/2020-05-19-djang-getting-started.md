@@ -3,7 +3,7 @@ toc: true
 layout: post
 description: My Django Customization when i start a project
 categories: [django,python]
-title: Django Personal Customization
+title: How do i start a Django Project 
 ---
 
 # Django 
@@ -127,4 +127,6 @@ python -c 'from django.core.management.utils import get_random_secret_key; print
 
 ## Next 
 
-I will write on static files serving for heroku and other things when i get time
+I will write on static files serving for heroku and other things when i get time.
+
+**Meanwhile if you find any mistake please let me know  .** :envelope:  [email](mailto:notkekayan@gmail.com)
