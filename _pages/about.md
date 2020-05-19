@@ -9,7 +9,7 @@ If describe me in one word, :thought_balloon: that would be Creatambitionate :wi
 So far the best part of my career was my one-year internship as a **Research Engineer** in Pearson Lanka Pvt. Ltd. I worked in different projects with different tech stacks while learning about complex architectural concerns along the way. My “thing” was Machine Learning and Deep Learning. But Pearson gave me the chance to grow as a full-stack dev as well. If I mention some of my tech stack (just for the formalities :wink: )
 
 <p class="text-center">
-    <img height="150" src="https://kekayan.github.io/notes/images/about.svg">
+    <img height="250" src="https://kekayan.github.io/notes/images/about.svg">
 </p>
 * Languages: Java, Python, JavaScript
 * Frameworks: SpringBoot, Flask, Django, ReactJs, VueJs

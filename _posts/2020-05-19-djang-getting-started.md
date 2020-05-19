@@ -48,7 +48,7 @@ rootdir
 ```
 
 ## Settings.py 
-Let's see what are the modifications i do in the `settings.py`
+Let's see the modifications i do in the `settings.py`
 I am going to install two more python packages 
 ```shell
 pip install python-decouple
