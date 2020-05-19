@@ -1,10 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://kekayan.github.io/notes/feed.xml" rel="self" type="application/atom+xml" /><link href="https://kekayan.github.io/notes/" rel="alternate" type="text/html" /><updated>2020-05-19T03:40:57-05:00</updated><id>https://kekayan.github.io/notes/feed.xml</id><title type="html">Notes</title><subtitle>My Personal Notes</subtitle><entry><title type="html">How do i start a Django Project</title><link href="https://kekayan.github.io/notes/django/python/2020/05/19/djang-getting-started.html" rel="alternate" type="text/html" title="How do i start a Django Project" /><published>2020-05-19T00:00:00-05:00</published><updated>2020-05-19T00:00:00-05:00</updated><id>https://kekayan.github.io/notes/django/python/2020/05/19/djang-getting-started</id><content type="html" xml:base="https://kekayan.github.io/notes/django/python/2020/05/19/djang-getting-started.html">&lt;h1 id=&quot;django&quot;&gt;Django&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://kekayan.github.io/notes/feed.xml" rel="self" type="application/atom+xml" /><link href="https://kekayan.github.io/notes/" rel="alternate" type="text/html" /><updated>2020-05-19T03:55:46-05:00</updated><id>https://kekayan.github.io/notes/feed.xml</id><title type="html">Notes</title><subtitle>My Personal Notes</subtitle><entry><title type="html">How do i start a Django Project</title><link href="https://kekayan.github.io/notes/django/python/2020/05/19/djang-getting-started.html" rel="alternate" type="text/html" title="How do i start a Django Project" /><published>2020-05-19T00:00:00-05:00</published><updated>2020-05-19T00:00:00-05:00</updated><id>https://kekayan.github.io/notes/django/python/2020/05/19/djang-getting-started</id><content type="html" xml:base="https://kekayan.github.io/notes/django/python/2020/05/19/djang-getting-started.html">&lt;h1 id=&quot;django&quot;&gt;Django&lt;/h1&gt;
 
 &lt;h2 id=&quot;restructure&quot;&gt;Restructure&lt;/h2&gt;
 
 &lt;p&gt;Let’s start a new project by executing &lt;code class=&quot;highlighter-rouge&quot;&gt;django-admin&lt;/code&gt;’s &lt;code class=&quot;highlighter-rouge&quot;&gt;startproject&lt;/code&gt; command .I will name the project as config.
-So i will execute following command in my python virtual environment.
-&lt;code class=&quot;highlighter-rouge&quot;&gt;shell django-admin startproject config&lt;/code&gt; .&lt;/p&gt;
+So i will execute following command in my python virtual environment.&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;django-admin startproject config
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Now the directory structure will be&lt;/p&gt;
 
@@ -21,7 +22,7 @@ So i will execute following command in my python virtual environment.
         │   asgi.py
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;first thing i am going to do is restructure the dir by taking out inner &lt;code class=&quot;highlighter-rouge&quot;&gt;config&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;manage.py&lt;/code&gt; to root.&lt;/p&gt;
+&lt;p&gt;first thing i am going to do is restructure the dir by taking out inner &lt;code class=&quot;highlighter-rouge&quot;&gt;config&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;manage.py&lt;/code&gt; to the root dir.&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rootdir
 │  manage.py
@@ -34,13 +35,13 @@ So i will execute following command in my python virtual environment.
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;settingspy&quot;&gt;Settings.py&lt;/h2&gt;
-
-&lt;p&gt;I am going to install three more python packages&lt;/p&gt;
+&lt;p&gt;Let’s see what are the modifications i do in the &lt;code class=&quot;highlighter-rouge&quot;&gt;settings.py&lt;/code&gt;
+I am going to install two more python packages&lt;/p&gt;
 &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;python-decouple
 pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;dj-database-url
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;python-decouple&quot;&gt;python-decouple&lt;/h3&gt;
+&lt;h3 id=&quot;why-python-decouple&quot;&gt;why python-decouple&lt;/h3&gt;
 &lt;p&gt;Web apps have different environments params.For example
 in Django database url, password, secret key, debug status, email host, allowed hosts. Best thing to do is decouple them from actual application.
 Python Decouple is doing exactly that by separating the settings parameters from the source code.&lt;/p&gt;
@@ -72,7 +73,8 @@ DATABASE_URL=sqlite:///db.sqlite3
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;decouple&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;dj_database_url&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;We can add an extra argument to the &lt;code class=&quot;highlighter-rouge&quot;&gt;config&lt;/code&gt; function, to define a default value  as below incase if it couldn’t be found in &lt;code class=&quot;highlighter-rouge&quot;&gt;.env&lt;/code&gt;.
+&lt;p&gt;I am using &lt;code class=&quot;highlighter-rouge&quot;&gt;config&lt;/code&gt; function from decouple to read the &lt;code class=&quot;highlighter-rouge&quot;&gt;.env&lt;/code&gt; params.
+We can add an extra arguments to the &lt;code class=&quot;highlighter-rouge&quot;&gt;config&lt;/code&gt; function, to define a default value  as below incase if it couldn’t be found in &lt;code class=&quot;highlighter-rouge&quot;&gt;.env&lt;/code&gt;.
 Also another argument called &lt;code class=&quot;highlighter-rouge&quot;&gt;cast&lt;/code&gt; for the type. It can transform our String to mentioned type&lt;/p&gt;
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;SECRET_KEY&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'SECRET_KEY'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'S#perS3crEt_1122KKKK'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
@@ -89,10 +91,10 @@ Also another argument called &lt;code class=&quot;highlighter-rouge&quot;&gt;cas
 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;dj-database-url&quot;&gt;dj-database-url&lt;/h3&gt;
+&lt;h3 id=&quot;why-dj-database-url&quot;&gt;why dj-database-url&lt;/h3&gt;
 
-&lt;p&gt;Above you have seen already we used &lt;a href=&quot;https://github.com/jacobian/dj-database-url&quot;&gt;dj-database-url &lt;/a&gt;while setting database environment variable.
-The &lt;code class=&quot;highlighter-rouge&quot;&gt;dj_database_url.config&lt;/code&gt; method returns a Django database connection dictionary, populated with all the data specified in your URL. There is also a conn_max_age argument to easily enable Django’s connection pool.&lt;/p&gt;
+&lt;p&gt;Above you have already seen i have used &lt;a href=&quot;https://github.com/jacobian/dj-database-url&quot;&gt;dj-database-url &lt;/a&gt;while setting database environment variable.
+The &lt;code class=&quot;highlighter-rouge&quot;&gt;dj_database_url.config&lt;/code&gt; method returns a Django database connection dictionary, populated with all the data specified in your URL. There is also a conn_max_age argument to easily enable Django’s connection pool.So it helps us to config the database urls.&lt;/p&gt;
 
 &lt;h2 id=&quot;django-secret-key&quot;&gt;Django Secret Key&lt;/h2&gt;
 

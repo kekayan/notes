@@ -124,8 +124,8 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h2">
 <a href="#settingspy">Settings.py</a>
 <ul>
-<li class="toc-entry toc-h3"><a href="#python-decouple">python-decouple</a></li>
-<li class="toc-entry toc-h3"><a href="#dj-database-url">dj-database-url</a></li>
+<li class="toc-entry toc-h3"><a href="#why-python-decouple">why python-decouple</a></li>
+<li class="toc-entry toc-h3"><a href="#why-dj-database-url">why dj-database-url</a></li>
 </ul>
 </li>
 <li class="toc-entry toc-h2"><a href="#django-secret-key">Django Secret Key</a></li>
@@ -140,8 +140,9 @@ window.onload = wrap_img;
 <a class="anchor" href="#restructure" aria-hidden="true"><span class="octicon octicon-link"></span></a>Restructure</h2>
 
 <p>Let’s start a new project by executing <code class="highlighter-rouge">django-admin</code>’s <code class="highlighter-rouge">startproject</code> command .I will name the project as config.
-So i will execute following command in my python virtual environment.
-<code class="highlighter-rouge">shell django-admin startproject config</code> .</p>
+So i will execute following command in my python virtual environment.</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>django-admin startproject config
+</code></pre></div></div>
 
 <p>Now the directory structure will be</p>
 
@@ -158,7 +159,7 @@ So i will execute following command in my python virtual environment.
         │   asgi.py
 </code></pre></div></div>
 
-<p>first thing i am going to do is restructure the dir by taking out inner <code class="highlighter-rouge">config</code> and <code class="highlighter-rouge">manage.py</code> to root.</p>
+<p>first thing i am going to do is restructure the dir by taking out inner <code class="highlighter-rouge">config</code> and <code class="highlighter-rouge">manage.py</code> to the root dir.</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rootdir
 │  manage.py
@@ -172,14 +173,14 @@ So i will execute following command in my python virtual environment.
 
 <h2 id="settingspy">
 <a class="anchor" href="#settingspy" aria-hidden="true"><span class="octicon octicon-link"></span></a>Settings.py</h2>
-
-<p>I am going to install three more python packages</p>
+<p>Let’s see what are the modifications i do in the <code class="highlighter-rouge">settings.py</code>
+I am going to install two more python packages</p>
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>python-decouple
 pip <span class="nb">install </span>dj-database-url
 </code></pre></div></div>
 
-<h3 id="python-decouple">
-<a class="anchor" href="#python-decouple" aria-hidden="true"><span class="octicon octicon-link"></span></a>python-decouple</h3>
+<h3 id="why-python-decouple">
+<a class="anchor" href="#why-python-decouple" aria-hidden="true"><span class="octicon octicon-link"></span></a>why python-decouple</h3>
 <p>Web apps have different environments params.For example
 in Django database url, password, secret key, debug status, email host, allowed hosts. Best thing to do is decouple them from actual application.
 Python Decouple is doing exactly that by separating the settings parameters from the source code.</p>
@@ -211,7 +212,8 @@ DATABASE_URL=sqlite:///db.sqlite3
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">decouple</span> <span class="kn">import</span> <span class="n">config</span>
 <span class="kn">import</span> <span class="nn">dj_database_url</span>
 </code></pre></div></div>
-<p>We can add an extra argument to the <code class="highlighter-rouge">config</code> function, to define a default value  as below incase if it couldn’t be found in <code class="highlighter-rouge">.env</code>.
+<p>I am using <code class="highlighter-rouge">config</code> function from decouple to read the <code class="highlighter-rouge">.env</code> params.
+We can add an extra arguments to the <code class="highlighter-rouge">config</code> function, to define a default value  as below incase if it couldn’t be found in <code class="highlighter-rouge">.env</code>.
 Also another argument called <code class="highlighter-rouge">cast</code> for the type. It can transform our String to mentioned type</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SECRET_KEY</span> <span class="o">=</span> <span class="n">config</span><span class="p">(</span><span class="s">'SECRET_KEY'</span><span class="p">,</span><span class="n">default</span><span class="o">=</span><span class="s">'S#perS3crEt_1122KKKK'</span><span class="p">)</span>
 
@@ -228,11 +230,11 @@ Also another argument called <code class="highlighter-rouge">cast</code> for the
 
 </code></pre></div></div>
 
-<h3 id="dj-database-url">
-<a class="anchor" href="#dj-database-url" aria-hidden="true"><span class="octicon octicon-link"></span></a>dj-database-url</h3>
+<h3 id="why-dj-database-url">
+<a class="anchor" href="#why-dj-database-url" aria-hidden="true"><span class="octicon octicon-link"></span></a>why dj-database-url</h3>
 
-<p>Above you have seen already we used <a href="https://github.com/jacobian/dj-database-url">dj-database-url </a>while setting database environment variable.
-The <code class="highlighter-rouge">dj_database_url.config</code> method returns a Django database connection dictionary, populated with all the data specified in your URL. There is also a conn_max_age argument to easily enable Django’s connection pool.</p>
+<p>Above you have already seen i have used <a href="https://github.com/jacobian/dj-database-url">dj-database-url </a>while setting database environment variable.
+The <code class="highlighter-rouge">dj_database_url.config</code> method returns a Django database connection dictionary, populated with all the data specified in your URL. There is also a conn_max_age argument to easily enable Django’s connection pool.So it helps us to config the database urls.</p>
 
 <h2 id="django-secret-key">
 <a class="anchor" href="#django-secret-key" aria-hidden="true"><span class="octicon octicon-link"></span></a>Django Secret Key</h2>
