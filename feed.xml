@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://kekayan.github.io/notes/feed.xml" rel="self" type="application/atom+xml" /><link href="https://kekayan.github.io/notes/" rel="alternate" type="text/html" /><updated>2020-05-23T07:02:23-05:00</updated><id>https://kekayan.github.io/notes/feed.xml</id><title type="html">Notes</title><subtitle>My Personal Notes</subtitle><entry><title type="html">How to deploy a Django Project to Heroku</title><link href="https://kekayan.github.io/notes/django/python/2020/05/23/django-deploy-to-heroku.html" rel="alternate" type="text/html" title="How to deploy a Django Project to Heroku" /><published>2020-05-23T00:00:00-05:00</published><updated>2020-05-23T00:00:00-05:00</updated><id>https://kekayan.github.io/notes/django/python/2020/05/23/django-deploy-to-heroku</id><content type="html" xml:base="https://kekayan.github.io/notes/django/python/2020/05/23/django-deploy-to-heroku.html">&lt;h1 id=&quot;deploy-a-django-project-to-heroku-rocket&quot;&gt;Deploy a Django Project to Heroku :rocket:&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="https://kekayan.github.io/notes/feed.xml" rel="self" type="application/atom+xml" /><link href="https://kekayan.github.io/notes/" rel="alternate" type="text/html" /><updated>2020-05-29T23:58:26-05:00</updated><id>https://kekayan.github.io/notes/feed.xml</id><title type="html">Notes</title><subtitle>My Personal Notes</subtitle><entry><title type="html">How to deploy a Django Project to Heroku</title><link href="https://kekayan.github.io/notes/django/python/2020/05/23/django-deploy-to-heroku.html" rel="alternate" type="text/html" title="How to deploy a Django Project to Heroku" /><published>2020-05-23T00:00:00-05:00</published><updated>2020-05-23T00:00:00-05:00</updated><id>https://kekayan.github.io/notes/django/python/2020/05/23/django-deploy-to-heroku</id><content type="html" xml:base="https://kekayan.github.io/notes/django/python/2020/05/23/django-deploy-to-heroku.html">&lt;h1 id=&quot;deploy-a-django-project-to-heroku-rocket&quot;&gt;Deploy a Django Project to Heroku :rocket:&lt;/h1&gt;
 
 &lt;h2 id=&quot;prereqs-white_check_mark&quot;&gt;Prereqs :white_check_mark:&lt;/h2&gt;
 
 &lt;p&gt;I ’ll assume that you have the familarity with the &lt;code class=&quot;highlighter-rouge&quot;&gt;Django&lt;/code&gt; , &lt;code class=&quot;highlighter-rouge&quot;&gt;git&lt;/code&gt; and have a project ready to deploy with it’s &lt;code class=&quot;highlighter-rouge&quot;&gt;requirements.txt&lt;/code&gt;.
-And read my article on &lt;a href=&quot;https://kekayan.github.io/notes/django/python/2020/05/19/djang-getting-started.html&quot;&gt;Inital setting up&lt;/a&gt;
+And read my article on &lt;a href=&quot;https://kekayan.github.io/notes/django/python/2020/05/19/django-customization.html&quot;&gt;Inital setting up&lt;/a&gt;
 Meanwhile :thought_balloon: wondering how to deploy so you can demo it to someone or just deploy to production.&lt;/p&gt;
 
 &lt;h2 id=&quot;heroku-cloud&quot;&gt;Heroku :cloud:&lt;/h2&gt;
@@ -45,7 +45,7 @@ and if you want to locally install you can&lt;/p&gt;
 
 &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'web: gunicorn config.wsgi --log-file -'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; Procfile
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Here &lt;code class=&quot;highlighter-rouge&quot;&gt;config&lt;/code&gt; is my app which has the &lt;code class=&quot;highlighter-rouge&quot;&gt;wsgi.py&lt;/code&gt; file.If you read my article &lt;a href=&quot;https://kekayan.github.io/notes/django/python/2020/05/19/djang-getting-started.html&quot;&gt;here&lt;/a&gt;.You will know why i name my app as config.&lt;/p&gt;
+&lt;p&gt;Here &lt;code class=&quot;highlighter-rouge&quot;&gt;config&lt;/code&gt; is my app which has the &lt;code class=&quot;highlighter-rouge&quot;&gt;wsgi.py&lt;/code&gt; file.If you read my article &lt;a href=&quot;https://kekayan.github.io/notes/django/python/2020/05/19/django-customization.html&quot;&gt;here&lt;/a&gt;.You will know why i name my app as config.&lt;/p&gt;
 
 &lt;p&gt;So here we are telling heroku it’s a web app with gunicorn server and the starting point is &lt;code class=&quot;highlighter-rouge&quot;&gt;wsgi.py&lt;/code&gt; from &lt;code class=&quot;highlighter-rouge&quot;&gt;config&lt;/code&gt; dir or app.&lt;/p&gt;
 
@@ -105,7 +105,7 @@ To install in environment&lt;/p&gt;
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;dj_database_url&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;DATABASES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'default'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dj_database_url&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;conn_max_age&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;600&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ssl_require&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;here you can find more on &lt;a href=&quot;https://kekayan.github.io/notes/django/python/2020/05/19/djang-getting-started.html&quot;&gt;my article&lt;/a&gt; on that and also heroku doc&lt;a href=&quot;https://devcenter.heroku.com/articles/heroku-postgresql#connecting-with-django&quot;&gt;doc&lt;/a&gt;
+&lt;p&gt;here you can find more on &lt;a href=&quot;https://kekayan.github.io/notes/django/python/2020/05/19/django-customization.html&quot;&gt;my article&lt;/a&gt; on that and also heroku doc&lt;a href=&quot;https://devcenter.heroku.com/articles/heroku-postgresql#connecting-with-django&quot;&gt;doc&lt;/a&gt;
 and add &lt;code class=&quot;highlighter-rouge&quot;&gt;psycopg2-binary&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;dj-database-url&lt;/code&gt; to your &lt;code class=&quot;highlighter-rouge&quot;&gt;requirements.txt&lt;/code&gt; file as well.&lt;/p&gt;
 
 &lt;h3 id=&quot;runtimetxt-checkered_flag&quot;&gt;runtime.txt :checkered_flag:&lt;/h3&gt;
@@ -230,12 +230,14 @@ To create a Abstract model in Django we have to add the Meta class and mention a
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;auto_now_add&lt;/code&gt; - updates on creation only
 &lt;code class=&quot;highlighter-rouge&quot;&gt;auto_now&lt;/code&gt; -  updated to the current timestamp every time an object is saved or modified.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Meanwhile if you find any mistake please let me know .&lt;/strong&gt; :envelope:  &lt;a href=&quot;mailto:notkekayan@gmail.com&quot;&gt;email&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Django Abstract Model Let’s understand the value of Django abstract model by a sample use case . Imagine a scenario where we are building a Dog Management App.Let’s think our main models are dog owner</summary></entry><entry><title type="html">How do i start a Django Project</title><link href="https://kekayan.github.io/notes/django/python/2020/05/19/djang-getting-started.html" rel="alternate" type="text/html" title="How do i start a Django Project" /><published>2020-05-19T00:00:00-05:00</published><updated>2020-05-19T00:00:00-05:00</updated><id>https://kekayan.github.io/notes/django/python/2020/05/19/djang-getting-started</id><content type="html" xml:base="https://kekayan.github.io/notes/django/python/2020/05/19/djang-getting-started.html">&lt;h1 id=&quot;django&quot;&gt;Django&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Meanwhile if you find any mistake please let me know .&lt;/strong&gt; :envelope:  &lt;a href=&quot;mailto:notkekayan@gmail.com&quot;&gt;email&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Django Abstract Model Let’s understand the value of Django abstract model by a sample use case . Imagine a scenario where we are building a Dog Management App.Let’s think our main models are dog owner</summary></entry><entry><title type="html">Django Project and Settings Customizations</title><link href="https://kekayan.github.io/notes/django/python/2020/05/19/django-customization.html" rel="alternate" type="text/html" title="Django Project and Settings Customizations" /><published>2020-05-19T00:00:00-05:00</published><updated>2020-05-19T00:00:00-05:00</updated><id>https://kekayan.github.io/notes/django/python/2020/05/19/django-customization</id><content type="html" xml:base="https://kekayan.github.io/notes/django/python/2020/05/19/django-customization.html">&lt;h1 id=&quot;django&quot;&gt;Django&lt;/h1&gt;
+
+&lt;p&gt;Django is a high-level Python Web framework that encourages rapid development and clean, pragmatic design. Usually, when I start a Django project I do a few customizations. So today I wanted to note it down that so I can refer later and others will also find useful. And I also assume that you have familiar with Django and Anaconda or other virtual environments.&lt;/p&gt;
 
 &lt;h2 id=&quot;restructure&quot;&gt;Restructure&lt;/h2&gt;
 
-&lt;p&gt;Let’s start a new project by executing &lt;code class=&quot;highlighter-rouge&quot;&gt;django-admin&lt;/code&gt;’s &lt;code class=&quot;highlighter-rouge&quot;&gt;startproject&lt;/code&gt; command .I will name the project as config.
-So i will execute following command in my python virtual environment.&lt;/p&gt;
+&lt;p&gt;Let’s start a new project by executing &lt;code class=&quot;highlighter-rouge&quot;&gt;django-admin&lt;/code&gt;’s &lt;code class=&quot;highlighter-rouge&quot;&gt;startproject&lt;/code&gt; command in the python virtual environment.&lt;/p&gt;
+
 &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;django-admin startproject config
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
@@ -254,7 +256,7 @@ So i will execute following command in my python virtual environment.&lt;/p&gt;
         │   asgi.py
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;first thing i am going to do is restructure the dir by taking out inner &lt;code class=&quot;highlighter-rouge&quot;&gt;config&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;manage.py&lt;/code&gt; to the root dir.&lt;/p&gt;
+&lt;p&gt;As a first step, I will restructure dir by taking out inner &lt;code class=&quot;highlighter-rouge&quot;&gt;config&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;manage.py&lt;/code&gt; to the root dir.&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rootdir
 │  manage.py
@@ -265,18 +267,24 @@ So i will execute following command in my python virtual environment.&lt;/p&gt;
     │ wsgi.py
     │ asgi.py
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;or this can be done easily by executing&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;django-admin startproject config &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;in the project dir itself.&lt;/p&gt;
 
 &lt;h2 id=&quot;settingspy&quot;&gt;Settings.py&lt;/h2&gt;
-&lt;p&gt;Let’s see the modifications i do in the &lt;code class=&quot;highlighter-rouge&quot;&gt;settings.py&lt;/code&gt;
-I am going to install two more python packages&lt;/p&gt;
+
+&lt;p&gt;Let’s see the modifications I usually do in the &lt;code class=&quot;highlighter-rouge&quot;&gt;settings.py&lt;/code&gt;. Because we need to decouple our settings from our environments. Also, there are many ways to achieve. I will start with the simplest and effective ones.
+Let’s install two more python packages&lt;/p&gt;
+
 &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;python-decouple
 pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;dj-database-url
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;why-python-decouple&quot;&gt;why python-decouple&lt;/h3&gt;
-&lt;p&gt;Web apps have different environments params.For example
-in Django database url, password, secret key, debug status, email host, allowed hosts. Best thing to do is decouple them from actual application.
-Python Decouple is doing exactly that by separating the settings parameters from the source code.&lt;/p&gt;
+&lt;p&gt;Web apps have different environments params. For example,
+in Django database URL, password, secret key, debug status, email host, allowed hosts will take different values for dev environment to the production environment. One of the best practice is decoupling them from the actual application.
+Python Decouple package is doing exactly that by separating the settings parameters from the source code.&lt;/p&gt;
 
 &lt;p&gt;First create a file named &lt;code class=&quot;highlighter-rouge&quot;&gt;.env&lt;/code&gt; in the root of the project.&lt;/p&gt;
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rootdir
@@ -290,10 +298,10 @@ Python Decouple is doing exactly that by separating the settings parameters from
     │ asgi.py
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Now in &lt;code class=&quot;highlighter-rouge&quot;&gt;.env&lt;/code&gt; we can add our environment variables. For example our &lt;code class=&quot;highlighter-rouge&quot;&gt;.env&lt;/code&gt; file looked like this.&lt;/p&gt;
+&lt;p&gt;Now in &lt;code class=&quot;highlighter-rouge&quot;&gt;.env&lt;/code&gt; file we can add our environment variables. For example our &lt;code class=&quot;highlighter-rouge&quot;&gt;.env&lt;/code&gt; file will look like this.&lt;/p&gt;
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;DEBUG=True
 SECRET_KEY=4drn&amp;amp;9w92v8=vrz2de2)0
-SERVER=*.herokuapp.com
+SERVER=*
 DATABASE_URL=sqlite:///db.sqlite3
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;blockquote&gt;
@@ -303,34 +311,42 @@ DATABASE_URL=sqlite:///db.sqlite3
 &lt;p&gt;Now in &lt;code class=&quot;highlighter-rouge&quot;&gt;settings.py&lt;/code&gt; we can import the decouple and set the params to be taken from our &lt;code class=&quot;highlighter-rouge&quot;&gt;.env&lt;/code&gt; file.&lt;/p&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;decouple&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;dj_database_url&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;I am using &lt;code class=&quot;highlighter-rouge&quot;&gt;config&lt;/code&gt; function from decouple to read the &lt;code class=&quot;highlighter-rouge&quot;&gt;.env&lt;/code&gt; params.
-We can add an extra arguments to the &lt;code class=&quot;highlighter-rouge&quot;&gt;config&lt;/code&gt; function, to define a default value  as below incase if it couldn’t be found in &lt;code class=&quot;highlighter-rouge&quot;&gt;.env&lt;/code&gt;.
-Also another argument called &lt;code class=&quot;highlighter-rouge&quot;&gt;cast&lt;/code&gt; for the type. It can transform our String to mentioned type&lt;/p&gt;
+&lt;p&gt;Now I can use the &lt;code class=&quot;highlighter-rouge&quot;&gt;config&lt;/code&gt; function from decouple module to read the &lt;code class=&quot;highlighter-rouge&quot;&gt;.env&lt;/code&gt; file and the params we set.
+The &lt;code class=&quot;highlighter-rouge&quot;&gt;config&lt;/code&gt; method will take extra arguments to define a default value as below incase if it couldn’t find the parm in &lt;code class=&quot;highlighter-rouge&quot;&gt;.env&lt;/code&gt;.
+Also, another argument called &lt;code class=&quot;highlighter-rouge&quot;&gt;cast&lt;/code&gt; for the type of params. It can transform our String params value to &lt;code class=&quot;highlighter-rouge&quot;&gt;cast&lt;/code&gt; argument type&lt;/p&gt;
+
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;SECRET_KEY&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'SECRET_KEY'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'S#perS3crEt_1122KKKK'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
 &lt;span class=&quot;n&quot;&gt;DEBUG&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'DEBUG'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cast&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;bool&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
 &lt;span class=&quot;n&quot;&gt;ALLOWED_HOSTS&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'localhost'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'127.0.0.1'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
                  &lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'SERVER'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'127.0.0.1'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;DATABASES&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;'default'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dj_database_url&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'DATABASE_URL'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;why-dj-database-url&quot;&gt;why dj-database-url&lt;/h3&gt;
 
-&lt;p&gt;Above you have already seen i have used &lt;a href=&quot;https://github.com/jacobian/dj-database-url&quot;&gt;dj-database-url &lt;/a&gt;while setting database environment variable.
-The &lt;code class=&quot;highlighter-rouge&quot;&gt;dj_database_url.config&lt;/code&gt; method returns a Django database connection dictionary, populated with all the data specified in your URL. There is also a conn_max_age argument to easily enable Django’s connection pool.So it helps us to config the database urls.&lt;/p&gt;
+&lt;p&gt;Like I already said we will have different databases for our dev to prod environments. So we need to decouple it as well. That’s where &lt;a href=&quot;https://github.com/jacobian/dj-database-url&quot;&gt;dj-database-url &lt;/a&gt; coming to rescue. The &lt;code class=&quot;highlighter-rouge&quot;&gt;dj_database_url.config&lt;/code&gt; method returns a Django database connection dictionary, populated with all the data specified in our URL. There is also a conn_max_age argument to easily enable Django’s connection pool. So now we only need to define our URL in the &lt;code class=&quot;highlighter-rouge&quot;&gt;.env&lt;/code&gt; file.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;dj_database_url&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;DATABASES&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;'default'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dj_database_url&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'DATABASE_URL'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;now we can set urls in the &lt;code class=&quot;highlighter-rouge&quot;&gt;.env&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;DEBUG=True
+SECRET_KEY=4drn&amp;amp;9w92v8=vrz2de2)0
+SERVER=*
+DATABASE_URL=sqlite:///db.sqlite3
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;django-secret-key&quot;&gt;Django Secret Key&lt;/h2&gt;
-
-&lt;p&gt;The easiest way to generate a secret key is using django it self.Django generates a secret key every time when we  create a new project. We can use that function as below&lt;/p&gt;
+&lt;p&gt;Incase if you want to change the secret key.
+The easiest way to generate a secret key is by using Django itself. Django generates a secret key every time when we create a new project. We can use that function as below&lt;/p&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;django.core.management.utils&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;get_random_secret_key&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_random_secret_key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
@@ -341,7 +357,6 @@ The &lt;code class=&quot;highlighter-rouge&quot;&gt;dj_database_url.config&lt;/c
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;next&quot;&gt;Next&lt;/h2&gt;
-
-&lt;p&gt;I will write on static files serving for heroku and other things when i get time.&lt;/p&gt;
+&lt;p&gt;I have added the STATIC file serving and Deployment to Heroku on &lt;a href=&quot;https://kekayan.github.io/notes/django/python/2020/05/23/django-deploy-to-heroku.html&quot;&gt;this note&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Meanwhile if you find any mistake please let me know  .&lt;/strong&gt; :envelope:  &lt;a href=&quot;mailto:notkekayan@gmail.com&quot;&gt;email&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Django</summary></entry></feed>

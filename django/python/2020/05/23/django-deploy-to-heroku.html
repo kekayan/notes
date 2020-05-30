@@ -180,7 +180,7 @@ window.onload = wrap_img;
 </h2>
 
 <p>I ’ll assume that you have the familarity with the <code class="highlighter-rouge">Django</code> , <code class="highlighter-rouge">git</code> and have a project ready to deploy with it’s <code class="highlighter-rouge">requirements.txt</code>.
-And read my article on <a href="https://kekayan.github.io/notes/django/python/2020/05/19/djang-getting-started.html">Inital setting up</a>
+And read my article on <a href="https://kekayan.github.io/notes/django/python/2020/05/19/django-customization.html">Inital setting up</a>
 Meanwhile <img class="emoji" title=":thought_balloon:" alt=":thought_balloon:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4ad.png" height="20" width="20"> wondering how to deploy so you can demo it to someone or just deploy to production.</p>
 
 <h2 id="heroku-cloud">
@@ -233,7 +233,7 @@ and if you want to locally install you can</p>
 
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s1">'web: gunicorn config.wsgi --log-file -'</span> <span class="o">&gt;</span> Procfile
 </code></pre></div></div>
-<p>Here <code class="highlighter-rouge">config</code> is my app which has the <code class="highlighter-rouge">wsgi.py</code> file.If you read my article <a href="https://kekayan.github.io/notes/django/python/2020/05/19/djang-getting-started.html">here</a>.You will know why i name my app as config.</p>
+<p>Here <code class="highlighter-rouge">config</code> is my app which has the <code class="highlighter-rouge">wsgi.py</code> file.If you read my article <a href="https://kekayan.github.io/notes/django/python/2020/05/19/django-customization.html">here</a>.You will know why i name my app as config.</p>
 
 <p>So here we are telling heroku it’s a web app with gunicorn server and the starting point is <code class="highlighter-rouge">wsgi.py</code> from <code class="highlighter-rouge">config</code> dir or app.</p>
 
@@ -301,7 +301,7 @@ To install in environment</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">dj_database_url</span>
 <span class="n">DATABASES</span><span class="p">[</span><span class="s">'default'</span><span class="p">]</span> <span class="o">=</span> <span class="n">dj_database_url</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">conn_max_age</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">ssl_require</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </code></pre></div></div>
-<p>here you can find more on <a href="https://kekayan.github.io/notes/django/python/2020/05/19/djang-getting-started.html">my article</a> on that and also heroku doc<a href="https://devcenter.heroku.com/articles/heroku-postgresql#connecting-with-django">doc</a>
+<p>here you can find more on <a href="https://kekayan.github.io/notes/django/python/2020/05/19/django-customization.html">my article</a> on that and also heroku doc<a href="https://devcenter.heroku.com/articles/heroku-postgresql#connecting-with-django">doc</a>
 and add <code class="highlighter-rouge">psycopg2-binary</code> and <code class="highlighter-rouge">dj-database-url</code> to your <code class="highlighter-rouge">requirements.txt</code> file as well.</p>
 
 <h3 id="runtimetxt-checkered_flag">
