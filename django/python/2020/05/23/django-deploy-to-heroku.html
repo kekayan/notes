@@ -179,15 +179,15 @@ window.onload = wrap_img;
 <a class="anchor" href="#prereqs-white_check_mark" aria-hidden="true"><span class="octicon octicon-link"></span></a>Prereqs <img class="emoji" title=":white_check_mark:" alt=":white_check_mark:" src="https://github.githubassets.com/images/icons/emoji/unicode/2705.png" height="20" width="20">
 </h2>
 
-<p>I ’ll assume that you have the familarity with the <code class="highlighter-rouge">Django</code> , <code class="highlighter-rouge">git</code> and have a project ready to deploy with it’s <code class="highlighter-rouge">requirements.txt</code>.
+<p>I ’ll assume that you have the familiarity with the <code class="highlighter-rouge">Django</code> , <code class="highlighter-rouge">git</code> and have a project ready to deploy with it’s <code class="highlighter-rouge">requirements.txt</code> file.
 And read my article on <a href="https://kekayan.github.io/notes/django/python/2020/05/19/django-customization.html">Inital setting up</a>
-Meanwhile <img class="emoji" title=":thought_balloon:" alt=":thought_balloon:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4ad.png" height="20" width="20"> wondering how to deploy so you can demo it to someone or just deploy to production.</p>
+Meanwhile <img class="emoji" title=":thought_balloon:" alt=":thought_balloon:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4ad.png" height="20" width="20"> wondering how to deploy so you can demo it to someone or just deploy.</p>
 
 <h2 id="heroku-cloud">
 <a class="anchor" href="#heroku-cloud" aria-hidden="true"><span class="octicon octicon-link"></span></a>Heroku <img class="emoji" title=":cloud:" alt=":cloud:" src="https://github.githubassets.com/images/icons/emoji/unicode/2601.png" height="20" width="20">
 </h2>
 <p>Heroku is a cloud <img class="emoji" title=":cloud:" alt=":cloud:" src="https://github.githubassets.com/images/icons/emoji/unicode/2601.png" height="20" width="20"> application platform, a Platform-as-a-Service (PaaS). 
-I feel Heroku is a great option to deploy our side projects and demos as a hobby dev. Also it has PostgreSQL Relational Database to try out free.</p>
+I feel Heroku is a great option to deploy our side projects and demos as a hobby dev. Also, it has PostgreSQL Relational Database to try out free.</p>
 
 <h3 id="create-an-account-checkered_flag">
 <a class="anchor" href="#create-an-account-checkered_flag" aria-hidden="true"><span class="octicon octicon-link"></span></a>Create an Account <img class="emoji" title=":checkered_flag:" alt=":checkered_flag:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f3c1.png" height="20" width="20">
@@ -204,8 +204,9 @@ It’s free and simple.</p>
 
 <h2 id="shaping-up-the-project-for-heroku-deploy">
 <a class="anchor" href="#shaping-up-the-project-for-heroku-deploy" aria-hidden="true"><span class="octicon octicon-link"></span></a>Shaping up the Project for Heroku deploy</h2>
+
 <p>Heroku needs the information about our app to run.So 
-We have to do few changes and add some thing to our project.</p>
+We have to do few changes and add some files to our project.</p>
 
 <h3 id="gunicorn-gift">
 <a class="anchor" href="#gunicorn-gift" aria-hidden="true"><span class="octicon octicon-link"></span></a>Gunicorn <img class="emoji" title=":gift:" alt=":gift:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f381.png" height="20" width="20">
@@ -217,6 +218,7 @@ It helps the Heroku to deploy our application across various “workers.”</p>
 <p>so in our <code class="highlighter-rouge">requirements.txt</code>
 we have to add <code class="highlighter-rouge">gunicorn</code>.
 and if you want to locally install you can</p>
+
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>gunicorn
 </code></pre></div></div>
 <p>also if you already don’t have a <code class="highlighter-rouge">requirements.txt</code> .You can create one by</p>
@@ -227,9 +229,12 @@ and if you want to locally install you can</p>
 <h3 id="procfile-checkered_flag">
 <a class="anchor" href="#procfile-checkered_flag" aria-hidden="true"><span class="octicon octicon-link"></span></a>Procfile <img class="emoji" title=":checkered_flag:" alt=":checkered_flag:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f3c1.png" height="20" width="20">
 </h3>
-<p>Procfile is unique for heroku. We have to add it in our project’s root directory.It basically tells Heroku how our app should start and run.</p>
+<p>Procfile is unique for heroku. We have to add it in our project’s root directory.It basically tells Heroku, how our app should start and run.</p>
 
-<p>You can manually create a procfile or run</p>
+<p>You can manually create a procfile add following lines</p>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">web</span><span class="pi">:</span> <span class="s">gunicorn config.wsgi --log-file -</span>
+</code></pre></div></div>
+<p>or run</p>
 
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s1">'web: gunicorn config.wsgi --log-file -'</span> <span class="o">&gt;</span> Procfile
 </code></pre></div></div>
@@ -237,17 +242,15 @@ and if you want to locally install you can</p>
 
 <p>So here we are telling heroku it’s a web app with gunicorn server and the starting point is <code class="highlighter-rouge">wsgi.py</code> from <code class="highlighter-rouge">config</code> dir or app.</p>
 
-<p>So you will need to replace it with <code class="highlighter-rouge">your_project_name.wsgi</code></p>
+<p>So don’t forget to replace it with <code class="highlighter-rouge">your_project_name.wsgi</code></p>
 
 <h3 id="django-heroku-gift">
 <a class="anchor" href="#django-heroku-gift" aria-hidden="true"><span class="octicon octicon-link"></span></a>Django-heroku <img class="emoji" title=":gift:" alt=":gift:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f381.png" height="20" width="20">
 </h3>
-<p>Heroku has created a python module called django-heroku that helps with settings, testing, and logging automatically.</p>
-
-<p>same as Gunicorn it also has be to added to our 
-<code class="highlighter-rouge">requirements.txt</code> as <code class="highlighter-rouge">django-heroku</code>.</p>
-
-<p>we have add these two lines to our <code class="highlighter-rouge">settings.py</code>.
+<p>Heroku has created a python module called django-heroku that helps with settings, testing, and logging automatically.
+same as Gunicorn it also has be to added to our 
+<code class="highlighter-rouge">requirements.txt</code> as <code class="highlighter-rouge">django-heroku</code>.
+we have add these two lines to our <code class="highlighter-rouge">settings.py</code>.
 first import it at the top</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">django_heroku</span>
@@ -260,7 +263,7 @@ first import it at the top</p>
 <a class="anchor" href="#static_root-checkered_flag" aria-hidden="true"><span class="octicon octicon-link"></span></a>STATIC_ROOT <img class="emoji" title=":checkered_flag:" alt=":checkered_flag:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f3c1.png" height="20" width="20">
 </h3>
 
-<p>So again in <code class="highlighter-rouge">settings.py</code> let’s add some changes belwo the variable called <code class="highlighter-rouge">STATIC_URL</code>. Let’s add the <code class="highlighter-rouge">STATIC_ROOT</code></p>
+<p>So again in <code class="highlighter-rouge">settings.py</code> let’s add some changes below the variable called <code class="highlighter-rouge">STATIC_URL</code>. Let’s add the <code class="highlighter-rouge">STATIC_ROOT</code></p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">STATIC_URL</span> <span class="o">=</span> <span class="s">'/static/'</span>
 <span class="n">STATIC_ROOT</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">BASE_DIR</span><span class="p">,</span> <span class="s">'static'</span><span class="p">)</span>
 </code></pre></div></div>
@@ -275,8 +278,9 @@ first import it at the top</p>
 <h3 id="to-serve-static-files-we-need-whitenoise-gift">
 <a class="anchor" href="#to-serve-static-files-we-need-whitenoise-gift" aria-hidden="true"><span class="octicon octicon-link"></span></a>To serve static files we need whitenoise <img class="emoji" title=":gift:" alt=":gift:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f381.png" height="20" width="20">
 </h3>
-<p>We need to add <code class="highlighter-rouge">whitenoise</code> to our <code class="highlighter-rouge">requirements.txt</code> file as well.
-To install in environment</p>
+<p>We need to add <code class="highlighter-rouge">whitenoise</code> to our <code class="highlighter-rouge">requirements.txt</code> file as well to serve the static files.</p>
+
+<p>To install in environment</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip install whitenoise
 </code></pre></div></div>
 <p>Now edit the <code class="highlighter-rouge">settings.py</code> file and add <code class="highlighter-rouge">WhiteNoise</code> to the <code class="highlighter-rouge">MIDDLEWARE</code> list as following.</p>
@@ -354,7 +358,7 @@ If you use cli it will be</p>
 </code></pre></div></div>
 <h4 id="maigrate--database">
 <a class="anchor" href="#maigrate--database" aria-hidden="true"><span class="octicon octicon-link"></span></a>maigrate  database</h4>
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>heroku run maigrate
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>heroku run migrate
 </code></pre></div></div>
 <p>You have deployed your app now <img class="emoji" title=":tada:" alt=":tada:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f389.png" height="20" width="20"> <img class="emoji" title=":tada:" alt=":tada:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f389.png" height="20" width="20"> <img class="emoji" title=":tada:" alt=":tada:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f389.png" height="20" width="20"></p>
 <h2 id="quick-note-warning">

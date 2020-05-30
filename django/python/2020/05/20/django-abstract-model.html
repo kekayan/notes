@@ -139,8 +139,8 @@ window.onload = wrap_img;
 </ul>
 <h1 id="django-abstract-model">
 <a class="anchor" href="#django-abstract-model" aria-hidden="true"><span class="octicon octicon-link"></span></a>Django Abstract Model</h1>
-<p>Let’s understand the value of Django abstract model by a sample use case .
-Imagine a scenario where we are building a Dog Management App.Let’s think our main models are</p>
+<p>Let’s understand the value of Django abstract model by a sample use case.
+Imagine a scenario where we are building a Dog Management App. Let’s think our main models are</p>
 <ul>
   <li>dog</li>
   <li>owner</li>
@@ -183,9 +183,9 @@ Usually what you will think,</p>
 
 <p>as you noticed we have included the both created date and update date fields for each model .</p>
 
-<p>Someone With the knowledge of OOP will think about it in a different way. With help of Abstract classes in Django
-He can first create a Date Aware Abstract model as a base and then extend it to other models without repeating it.
-To create a Abstract model in Django we have to add the Meta class and mention abstract is true.</p>
+<p>With the knowledge of OOP, we can approach this in a better way. Abstract classes in Django is the answer to the above situation
+We can first create a Date Aware Abstract model as a base and then extend it to other models without repeating it.
+To create an Abstract model in Django we have to add the Meta class to our model and set abstract is true.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">DateAwareModel</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
 
