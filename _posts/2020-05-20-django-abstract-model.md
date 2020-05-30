@@ -7,8 +7,8 @@ title: Django Abstract Model as Base Model
 ---
 
 # Django Abstract Model
-Let's understand the value of Django abstract model by a sample use case .
-Imagine a scenario where we are building a Dog Management App.Let's think our main models are
+Let's understand the value of Django abstract model by a sample use case.
+Imagine a scenario where we are building a Dog Management App. Let's think our main models are
 *   dog
 *   owner
 
@@ -55,9 +55,10 @@ class Dog(models.Model):
  as you noticed we have included the both created date and update date fields for each model .
 
 
-Someone With the knowledge of OOP will think about it in a different way. With help of Abstract classes in Django
-He can first create a Date Aware Abstract model as a base and then extend it to other models without repeating it.
-To create a Abstract model in Django we have to add the Meta class and mention abstract is true.
+With the knowledge of OOP, we can approach this in a better way. Abstract classes in Django is the answer to the above situation
+We can first create a Date Aware Abstract model as a base and then extend it to other models without repeating it.
+To create an Abstract model in Django we have to add the Meta class to our model and set abstract is true.
+
 
 ```python
 class DateAwareModel(models.Model):

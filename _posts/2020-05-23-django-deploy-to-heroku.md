@@ -10,13 +10,13 @@ title: How to deploy a Django Project to Heroku
 
 ## Prereqs :white_check_mark:
 
-I ’ll assume that you have the familarity with the `Django` , `git` and have a project ready to deploy with it's `requirements.txt`.
+I ’ll assume that you have the familiarity with the `Django` , `git` and have a project ready to deploy with it's `requirements.txt` file.
 And read my article on [Inital setting up](https://kekayan.github.io/notes/django/python/2020/05/19/django-customization.html)
-Meanwhile :thought_balloon: wondering how to deploy so you can demo it to someone or just deploy to production.
+Meanwhile :thought_balloon: wondering how to deploy so you can demo it to someone or just deploy.
 
 ## Heroku :cloud:
 Heroku is a cloud :cloud: application platform, a Platform-as-a-Service (PaaS). 
-I feel Heroku is a great option to deploy our side projects and demos as a hobby dev. Also it has PostgreSQL Relational Database to try out free.
+I feel Heroku is a great option to deploy our side projects and demos as a hobby dev. Also, it has PostgreSQL Relational Database to try out free.
 
 ### Create an Account :checkered_flag:
 If you don't already have an account Please Sign up [here](https://signup.heroku.com/) for an account.
@@ -29,8 +29,9 @@ curl https://cli-assets.heroku.com/install.sh | sh
 if you want to know more on how to install CLI please check [here](https://devcenter.heroku.com/articles/heroku-cli#download-and-install)
 
 ## Shaping up the Project for Heroku deploy
+
 Heroku needs the information about our app to run.So 
-We have to do few changes and add some thing to our project.
+We have to do few changes and add some files to our project.
 
 ### Gunicorn :gift:
 
@@ -40,6 +41,7 @@ It helps the Heroku to deploy our application across various “workers.”
 so in our `requirements.txt`
 we have to add `gunicorn`.
 and if you want to locally install you can 
+
 ```shell
 pip install gunicorn
 ```
@@ -50,9 +52,13 @@ pip freeze > requirements.txt
 in your virtual environment.
 
 ### Procfile :checkered_flag:
-Procfile is unique for heroku. We have to add it in our project’s root directory.It basically tells Heroku how our app should start and run.
+Procfile is unique for heroku. We have to add it in our project’s root directory.It basically tells Heroku, how our app should start and run.
 
-You can manually create a procfile or run 
+You can manually create a procfile add following lines
+```yaml
+web: gunicorn config.wsgi --log-file -
+```
+ or run 
 
 ```shell
 echo 'web: gunicorn config.wsgi --log-file -' > Procfile
@@ -61,15 +67,13 @@ Here `config` is my app which has the `wsgi.py` file.If you read my article [her
 
 So here we are telling heroku it's a web app with gunicorn server and the starting point is `wsgi.py` from `config` dir or app.
 
-So you will need to replace it with `your_project_name.wsgi`
+So don't forget to replace it with `your_project_name.wsgi`
 
 
 ### Django-heroku :gift:
 Heroku has created a python module called django-heroku that helps with settings, testing, and logging automatically.
-
 same as Gunicorn it also has be to added to our 
 `requirements.txt` as `django-heroku`.
-
 we have add these two lines to our `settings.py`.
 first import it at the top
 
@@ -83,7 +87,7 @@ django_heroku.settings(locals())
 ```
 ###  STATIC_ROOT :checkered_flag:
 
-So again in `settings.py` let's add some changes belwo the variable called `STATIC_URL`. Let's add the `STATIC_ROOT` 
+So again in `settings.py` let's add some changes below the variable called `STATIC_URL`. Let's add the `STATIC_ROOT` 
 ```python
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
@@ -98,7 +102,8 @@ STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 ```
 
 ### To serve static files we need whitenoise :gift:
-We need to add `whitenoise` to our `requirements.txt` file as well.
+We need to add `whitenoise` to our `requirements.txt` file as well to serve the static files.
+
 To install in environment
 ```
 pip install whitenoise
@@ -172,7 +177,7 @@ git push heroku master
 ```
 #### maigrate  database
 ```shell 
-heroku run maigrate
+heroku run migrate
 ```
 You have deployed your app now :tada: :tada: :tada:
 ## Quick Note :warning:
