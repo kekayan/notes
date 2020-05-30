@@ -11,7 +11,7 @@ title: How to deploy a Django Project to Heroku
 ## Prereqs :white_check_mark:
 
 I ’ll assume that you have the familarity with the `Django` , `git` and have a project ready to deploy with it's `requirements.txt`.
-And read my article on [Inital setting up](https://kekayan.github.io/notes/django/python/2020/05/19/djang-getting-started.html)
+And read my article on [Inital setting up](https://kekayan.github.io/notes/django/python/2020/05/19/django-customization.html)
 Meanwhile :thought_balloon: wondering how to deploy so you can demo it to someone or just deploy to production.
 
 ## Heroku :cloud:
@@ -57,7 +57,7 @@ You can manually create a procfile or run
 ```shell
 echo 'web: gunicorn config.wsgi --log-file -' > Procfile
 ```
-Here `config` is my app which has the `wsgi.py` file.If you read my article [here](https://kekayan.github.io/notes/django/python/2020/05/19/djang-getting-started.html).You will know why i name my app as config.
+Here `config` is my app which has the `wsgi.py` file.If you read my article [here](https://kekayan.github.io/notes/django/python/2020/05/19/django-customization.html).You will know why i name my app as config.
 
 So here we are telling heroku it's a web app with gunicorn server and the starting point is `wsgi.py` from `config` dir or app.
 
@@ -126,7 +126,7 @@ Add the following to the bottom of `settings.py`:
 import dj_database_url
 DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 ```
-here you can find more on [my article](https://kekayan.github.io/notes/django/python/2020/05/19/djang-getting-started.html) on that and also heroku doc[doc](https://devcenter.heroku.com/articles/heroku-postgresql#connecting-with-django)
+here you can find more on [my article](https://kekayan.github.io/notes/django/python/2020/05/19/django-customization.html) on that and also heroku doc[doc](https://devcenter.heroku.com/articles/heroku-postgresql#connecting-with-django)
 and add `psycopg2-binary` and `dj-database-url` to your `requirements.txt` file as well.
 
 ### runtime.txt :checkered_flag:
